@@ -27,7 +27,12 @@ if __name__ == '__main__':
          pprint.pprint(json.loads(response.read()))
 
       elif filter((lambda a : a[0] == 'content-type' and a[1] == 'application/octet-stream' or a[0] == 'content-disposition'), response.getheaders()):
-         sys.stdout.write(response.read())
+#         print("response headers %s" % response.getheaders())
+         chunk=1048576
+         read_chunk=response.read(chunk)
+         while read_chunk != None and len(read_chunk) > 0:
+            sys.stdout.write(read_chunk)
+            read_chunk=response.read(chunk)
       else:
          print('Content-type undetected')
          print(response.getheaders())
