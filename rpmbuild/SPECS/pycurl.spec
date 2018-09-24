@@ -8,8 +8,8 @@ License:	None
 URL:		None
 Source0:	pycurl.tar.gz
 
-BuildRequires:	python
-Requires:	python
+BuildRequires:	python2
+Requires:	python2
 
 %description
 
